@@ -11,21 +11,24 @@ const HomeStatistics = () => {
   const statistics = data?.data?.statistics || [];
 
   return (
-    <Swiper
+   <Swiper
       modules={[Autoplay]}
       spaceBetween={20}
       slidesPerView={2}
-      centerInsufficientSlides={true} 
+      centerInsufficientSlides={true}
+      grabCursor={true}
+      allowTouchMove={true}
       watchOverflow={true}
       breakpoints={{
         640: { slidesPerView: 3 },
         1024: { slidesPerView: 5 },
-        1440: { slidesPerView: 7 }, 
+        1440: { slidesPerView: 7 },
       }}
-      loop={statistics.length > 7} 
+      loop={statistics.length > 7}
       autoplay={{
         delay: 4500,
         disableOnInteraction: false,
+        pauseOnMouseEnter: true,
       }}
       className="w-full"
     >
