@@ -55,6 +55,8 @@ export default function HeroSection() {
             <Button
               className="text-white bg-red"
               icon={<LuArrowRight className="rtl:rotate-180" />}
+              href={homeData?.learnMore || "/about"}
+              text={t("home.learn_more")}
               onClick={() => navigate(homeData?.learnMore || "/about")}
             >
               {t("home.learn_more")}
@@ -64,7 +66,7 @@ export default function HeroSection() {
       )}
 
       <div
-        className="absolute top-[38rem] z-40 mx-auto flex w-full max-w-[1790px] px-3 md:px-10"
+        className="absolute top-[40rem] z-40 mx-auto flex w-full max-w-[1790px] px-3 md:px-10"
         id="learnmore"
       >
         <HomeStatistics />

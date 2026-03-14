@@ -120,8 +120,9 @@
     "associates_and_affiliates": "Associates & Affiliates"
   },
   "coreBusiness": {
-    "find_you_the_right_equipment": "Find you the right equipment",
+    "find_you_the_right_equipment": "Find the right Engineering & Fabrication Solutions",
     "our_featured_equipments": "Our Products & Services",
+    "quote":"We help you get the most out of your heavy engineering products and services",
     "how_it_works": "How It Works",
     "discuss_project_needs": "Discuss Your Project Needs",
     "discuss_project_needs_desc": "Describe your project and the equipment you require. Our team will work closely with you to understand your specific requirements.",
@@ -131,7 +132,7 @@
     "delivery_support_desc": "We handle all logistics, ensuring your equipment arrives on-site, ready to work. Optional on-site support and maintenance are available.",
     "our_expertise": "Our Expertise",
     "our_featured_services": "Our Featured Services",
-    "view_all_equipments": "View all equipments",
+    "view_all_equipments": "View all equipment",
     "explore_more": "Explore more",
     "view_all_specifications": "View all specifications",
     "request_quote": "Request a Quote",
@@ -140,8 +141,8 @@
     "service_support": "Service and Support",
     "reviews": "Reviews",
     "photos": "Photos",
-    "browse_more_equipments": "Browse more equipments",
-    "related_equipments": "Related Equipments",
+    "browse_more_equipments": "Browse more equipment",
+    "related_equipments": "Related Equipment",
     "gallery": "Gallery",
     "download_pdf": "Download Pdf"
   },

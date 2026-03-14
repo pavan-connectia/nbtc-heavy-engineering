@@ -120,9 +120,11 @@ const CoreBusiness = () => {
         <div className="relative w-full md:w-[75%]">
           <div className="absolute z-40 flex h-full w-full items-center justify-between gap-5 p-5 md:px-10">
             <Paragraph
-              children="We help you get the most out of your heavy equipment."
+              
               className="font-normal text-white md:text-lg lg:text-xl"
-            />
+            >
+              {t("coreBusiness.quote")}
+              </Paragraph>
             <Button
               onClick={() => {
                 setSelectedEquipment({
