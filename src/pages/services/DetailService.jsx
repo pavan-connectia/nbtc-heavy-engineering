@@ -47,13 +47,13 @@ const DetailService = () => {
               ))}
             </div>
 
-            <Card className="max-h-[27rem] max-w-[34rem] flex-shrink-0 md:h-[27rem] md:w-[34rem]">
-              <Img
-                dynamic
-                className="h-full w-full object-contain"
-                src={selectedImg || data?.data?.image || ""}
-              />
-            </Card>
+
+            <Img
+              dynamic
+              className="h-full w-full object-contain max-h-[27rem] max-w-[34rem] flex-shrink-0 md:h-[27rem] md:w-[34rem]"
+              src={selectedImg || data?.data?.image || ""}
+            />
+
           </div>
 
           <div className="space-y-1 xl:w-[43%]">

@@ -10,7 +10,7 @@ const OurServices = lazy(() => import("@/components/home/OurServices"));
 const HomeProjects = lazy(() => import("@/components/home/HomeProjects"));
 const HomeBrands = lazy(() => import("@/components/home/HomeBrands"));
 const Client = lazy(() => import("@/components/home/Client"));
-const OurMilestones = lazy(() => import("@/components/home/OurMilestones"));
+// const OurMilestones = lazy(() => import("@/components/home/OurMilestones"));
 const Awards = lazy(() => import("@/components/home/Awards"));
 const Afflicates = lazy(() => import("@/components/home/Afflicates"));
 const EmployeeLinks = lazy(() => import("@/components/home/EmployeeLinks"));
@@ -52,7 +52,7 @@ const Home = () => {
       <LazyLoadComponent Component={HomeBrands} />
       <LazyLoadComponent Component={Client} />
 
-      <LazyLoadComponent Component={OurMilestones} />
+      {/* <LazyLoadComponent Component={OurMilestones} /> */}
       <LazyLoadComponent Component={Awards} />
       <LazyLoadComponent Component={Afflicates} />
       <LazyLoadComponent Component={EmployeeLinks} />

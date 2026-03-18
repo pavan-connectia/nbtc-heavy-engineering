@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Button,
   ContactForm,
@@ -25,17 +25,65 @@ import ServicesCard from "@/components/comman/ServicesCard";
 const CoreBusiness = () => {
   const { t, i18n } = useTranslation();
   const { data } = useGetCoreBusinessByDeptIdQuery();
+  const featuredScrollRef = useRef(null);
+  const servicesScrollRef = useRef(null);
   const { data: equipDept } = useGetEquipmentsByFeaturedPopularDeptIdQuery();
   const { data: serviceDept } = useGetServiceByDeptIdQuery();
 
   const [showModal, setShowModal] = useState(false);
   const [selectedEquipment, setSelectedEquipment] = useState(null);
 
-  const currentLang = i18n.language === "ar" ? "ar" : "en";
+    const currentLang = i18n.language === "ar" ? "ar" : "en";
 
-  const fltrdFeatured = equipDept?.data?.filter((e) => e.featured === true);
+  const fltrdFeatured = equipDept?.data?.filter((e) => e.featured === true) || [];
 
-  const fltrdPopular = equipDept?.data?.filter((e) => e.popular === true);
+  const fltrdPopular = equipDept?.data?.filter((e) => e.popular === true) || [];
+
+  useEffect(() => {
+    if (!featuredScrollRef.current || !fltrdFeatured?.length) return;
+    const container = featuredScrollRef.current;
+    container.scrollLeft = container.scrollWidth / 3;
+  }, [fltrdFeatured]);
+
+  useEffect(() => {
+    if (!servicesScrollRef.current || !serviceDept?.data?.length) return;
+    const container = servicesScrollRef.current;
+    container.scrollLeft = container.scrollWidth / 3;
+  }, [serviceDept]);
+
+
+
+  const handleFeaturedScroll = () => {
+    const container = featuredScrollRef.current;
+    if (!container) return;
+
+    const totalWidth = container.scrollWidth;
+    const singleSetWidth = totalWidth / 3;
+
+    if (container.scrollLeft <= 0) {
+      container.scrollLeft = singleSetWidth;
+    }
+
+    if (container.scrollLeft >= singleSetWidth * 2) {
+      container.scrollLeft = singleSetWidth;
+    }
+  };
+
+  const handleServicesScroll = () => {
+    const container = servicesScrollRef.current;
+    if (!container) return;
+
+    const totalWidth = container.scrollWidth;
+    const singleSetWidth = totalWidth / 3;
+
+    if (container.scrollLeft <= 0) {
+      container.scrollLeft = singleSetWidth;
+    }
+
+    if (container.scrollLeft >= singleSetWidth * 2) {
+      container.scrollLeft = singleSetWidth;
+    }
+  };
 
   return (
     <>
@@ -99,10 +147,16 @@ const CoreBusiness = () => {
             {t("coreBusiness.our_featured_equipments")}
           </Heading>
 
-          <div className="scrollbar-hide flex justify-start gap-5 overflow-x-auto px-5 py-10">
-            {fltrdFeatured?.map((d) => (
-              <EquipmentCard equipment={d} key={d?._id} />
-            ))}
+          <div className="relative py-10">
+            <div
+              ref={featuredScrollRef}
+              onScroll={handleFeaturedScroll}
+              className="scrollbar-hide flex gap-5 overflow-x-auto px-5"
+            >
+              {[...fltrdFeatured, ...fltrdFeatured, ...fltrdFeatured]?.map((d, index) => (
+                <EquipmentCard equipment={d} key={`${d?._id}-${index}`} />
+              ))}
+            </div>
           </div>
 
           <HyperLink
@@ -116,15 +170,15 @@ const CoreBusiness = () => {
         </div>
       </MaxContainer>
 
-      <MaxContainer className="mb-20 flex h-[7rem]">
+      <MaxContainer className="mb-20 flex  h-[10rem]">
         <div className="relative w-full md:w-[75%]">
-          <div className="absolute z-40 flex h-full w-full items-center justify-between gap-5 p-5 md:px-10">
+          <div className="absolute z-40 flex h-full   w-full items-center justify-between gap-5 p-5 md:px-10">
             <Paragraph
-              
+
               className="font-normal text-white md:text-lg lg:text-xl"
             >
               {t("coreBusiness.quote")}
-              </Paragraph>
+            </Paragraph>
             <Button
               onClick={() => {
                 setSelectedEquipment({
@@ -178,10 +232,17 @@ const CoreBusiness = () => {
             {t("coreBusiness.our_featured_services")}
           </Heading>
 
-          <div className="scrollbar-hide flex justify-start gap-5 overflow-x-auto px-5 py-10">
-            {serviceDept?.data?.map((d) => (
-              <ServicesCard service={d} key={d?._id} />
-            ))}
+          <div className="relative py-10">
+            <div
+              ref={servicesScrollRef}
+              onScroll={handleServicesScroll}
+              className="scrollbar-hide flex gap-5 overflow-x-auto px-5"
+            >
+              {[...(serviceDept?.data || []), ...(serviceDept?.data || []), ...(serviceDept?.data || [])]
+                .map((d, index) => (
+                  <ServicesCard service={d} key={`${d?._id}-${index}`} />
+                ))}
+            </div>
           </div>
 
           <HyperLink
